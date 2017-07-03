@@ -23,7 +23,12 @@
             var message = userNameField.value + ":" + messageField.value;
             ws.send(message);
             messageField.value = '';
-        }
+        };
+        function logout() {
+            var request = new XMLHttpRequest();
+            request.open("DELETE", "/api/login", true);
+            request.send("");
+        };
     </script>
 </head>
 <body onload="init()">
@@ -43,5 +48,6 @@
     <input name="usermsg" type="text" id="message" size="40"/>
     <input type="button" name="submitmsg" value="Send..." onclick="sendMessage();"/>
 </form>
+<input type="button" name="logoutButton" value="Log out" onclick="logout()"/>
 </body>
 </html>

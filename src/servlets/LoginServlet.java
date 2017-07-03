@@ -3,6 +3,7 @@ package servlets;
 import accounts.AccountException;
 import accounts.MapAccountsService;
 import accounts.User;
+import services.AccountsService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -45,6 +46,20 @@ public class LoginServlet extends HttpServlet {
         } catch(AccountException e) {
             response.getWriter().println("Wrong login or password");
             response.setContentType("text/html;charset=utf-8");
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+        }
+    }
+
+    public void doDelete(HttpServletRequest request,
+                      HttpServletResponse response) throws ServletException, IOException {
+        AccountsService accountsService = MapAccountsService.instance();
+        String sessionId = request.getSession().getId();
+        try {
+            accountsService.deleteSession(sessionId);
+            response.getWriter().println("Goodbye!");
+            response.setContentType("text/html;charset=utf-8");
+            response.setStatus(HttpServletResponse.SC_OK);
+        } catch(AccountException e) {
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         }
     }

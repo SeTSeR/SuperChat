@@ -19,7 +19,7 @@ public class RegisterServlet extends HttpServlet {
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=utf-8");
-        response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+        response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
     }
 
     public void doPost(HttpServletRequest request,
@@ -27,6 +27,10 @@ public class RegisterServlet extends HttpServlet {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
         AccountsService accountsService = MapAccountsService.instance();
+        if(login == null || password == null) {
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            return;
+        }
         try {
             accountsService.addUser(new User(login, password));
             response.getWriter().println("You are successfully registered! Now go back to the main page and login");

@@ -1,9 +1,6 @@
 package main;
 
-import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.server.handler.HandlerList;
-import org.eclipse.jetty.server.handler.ResourceHandler;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import servlets.LoginServlet;
@@ -19,7 +16,7 @@ public class Main {
         LoginServlet loginServlet = new LoginServlet();
         RegisterServlet registerServlet = new RegisterServlet();
 
-        ServletContextHandler contextHandler = new ServletContextHandler();
+        ServletContextHandler contextHandler = new ServletContextHandler(ServletContextHandler.SESSIONS);
         contextHandler.addServlet(new ServletHolder(mainServlet), "/");
         contextHandler.addServlet(new ServletHolder(loginServlet), "/api/login");
         contextHandler.addServlet(new ServletHolder(registerServlet), "/api/register");

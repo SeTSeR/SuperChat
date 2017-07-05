@@ -10,5 +10,7 @@
     <orderEntry type="library" name="org.eclipse.jetty:jetty-webapp:9.3.15.v20161220" level="project" />
     <orderEntry type="library" name="org.eclipse.jetty:jetty-server:9.3.15.v20161220" level="project" />
     <orderEntry type="library" name="org.freemarker:freemarker:2.3.23" level="project" />
+    <orderEntry type="library" name="org.eclipse.jetty.websocket:websocket-server:9.3.15.v20161220" level="project" />
+    <orderEntry type="library" name="org.eclipse.jetty.websocket:websocket-servlet:9.3.15.v20161220" level="project" />
   </component>
 </module>

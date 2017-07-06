@@ -10,6 +10,6 @@ public interface AccountsService {
     void addUser(User user) throws AccountException;
     User getUserByName(String name) throws AccountException;
     User getUserBySessionId(String sessionId) throws AccountException;
-    void addSession(User user, String sessionId);
+    void addSession(User user, String sessionId) throws AccountException;
     void deleteSession(String sessionId) throws AccountException;
 }

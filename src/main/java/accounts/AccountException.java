@@ -10,6 +10,8 @@ public class AccountException extends Exception {
         this.status = status;
     }
 
+    public AccountException(Throwable throwable) { super(throwable); }
+
     public AccountError getStatus() {
         return status;
     }

@@ -67,3 +67,6 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
+h2db.mv.db
+.gradle/
+build/

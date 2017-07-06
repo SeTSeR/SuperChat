@@ -1,6 +1,7 @@
 package servlets;
 
 import accounts.AccountException;
+import accounts.DBAccountsService;
 import accounts.MapAccountsService;
 import accounts.User;
 import services.AccountsService;
@@ -26,7 +27,7 @@ public class RegisterServlet extends HttpServlet {
                       HttpServletResponse response) throws ServletException, IOException {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
-        AccountsService accountsService = MapAccountsService.instance();
+        AccountsService accountsService = DBAccountsService.instance();
         if(login == null || password == null) {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             return;

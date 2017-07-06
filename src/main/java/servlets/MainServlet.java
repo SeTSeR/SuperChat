@@ -1,6 +1,7 @@
 package servlets;
 
 import accounts.AccountException;
+import accounts.DBAccountsService;
 import accounts.MapAccountsService;
 import accounts.User;
 import services.AccountsService;
@@ -19,7 +20,7 @@ import java.util.HashMap;
 public class MainServlet extends HttpServlet {
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
-        AccountsService accountsService = MapAccountsService.instance();
+        AccountsService accountsService = DBAccountsService.instance();
         User user;
         try {
             user = accountsService.getUserBySessionId(request.getSession().getId());
